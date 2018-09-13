@@ -9,11 +9,11 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link href="/listusers/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/listusers/css/font-awesome.min.css?v=1536827640" rel="stylesheet">
     <link href="/listusers/css/bootstrap.min.css" rel="stylesheet">
     <link href="/listusers/css/custom.css" rel="stylesheet">
-    <link href="/listusers/css/bootstrap-datetimepicket.css" rel="stylesheet">
     <link href="/listusers/css/bootstrap-select.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
     <!-- jQuery -->
@@ -44,6 +44,14 @@
         <ul class="nav nav-tabs">
             <li class="p-b">
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#createUserModal">Add user</button>
+                <li class="pull-right p-b">
+                    <div class="input-group" style="width: 350px;">
+                        <input type="text" class="form-control" id="querySearch" placeholder="Search users">
+                        <span class="input-group-btn">
+                             <button type="submit" class="btn btn-default" id="find_user"><span class="fa fa-search" aria-hidden="true"></span></button>
+                        </span>
+                    </div>
+                </li>
             </li>
         </ul>
 
@@ -151,6 +159,20 @@
                     success: function (data) {
                         $('#print_result').html("<div class='alert alert-success'>"+data+"</div>");
                         fetch_data();
+                    }
+                });
+            });
+
+            $('#find_user').click(function () {
+                var search = $('#querySearch').val();
+
+                $.ajax({
+                    url: 'find_user.php',
+                    method: 'POST',
+                    data: {search: search},
+                    dataType: 'text',
+                    success: function (data) {
+                        $('#list_users').html(data);
                     }
                 });
             });
