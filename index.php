@@ -222,6 +222,30 @@
                     }
                 });
             });
+
+            $(document).on('click', '#show_active', function () {
+                $.ajax({
+                    url: 'show_active.php',
+                    method: 'POST',
+                    success: function (data) {
+                        $('#list_users').html(data);
+                    }
+                });
+            });
+
+            $(document).on('click', '#show_all', function () {
+                fetch_data();
+            });
+
+            $(document).on('click', '#show_suspended', function () {
+                $.ajax({
+                    url: 'show_suspended.php',
+                    method: 'POST',
+                    success: function (data) {
+                        $('#list_users').html(data);
+                    }
+                });
+            });
         });
     </script>
     <!-- kraj za scripte -->

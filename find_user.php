@@ -10,7 +10,9 @@
     $sqlquery = "SELECT * FROM tbl_users WHERE username LIKE '%".$_POST['search']."%' OR id LIKE '%".$_POST['search']."%' OR email LIKE '%".$_POST['search']."%' OR skype LIKE '%".$_POST['search']."%'";
     $result = mysqli_query($connect, $sqlquery);
 
-    $all = mysqli_num_rows($result);
+    $sqlShowAll = "SELECT * FROM tbl_users ORDER BY id DESC";
+    $result3 = mysqli_query($connect, $sqlShowAll);
+    $all = mysqli_num_rows($result3);
 
     $sqlActiveUsers = "SELECT * FROM tbl_users WHERE status = 1";
     $result1 = mysqli_query($connect, $sqlActiveUsers);
@@ -35,9 +37,9 @@
                             Status<span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="#">All <span class="badge" style="background-color: #007bff">'.$all.'</span></a></li>
-                            <li><a href="#">Active <span class="badge" style="background-color: #28a745">'.$active.'</span></a></li>
-                            <li><a href="#">Suspended <span class="badge" style="background-color: #dc3545">'.$suspended.'</span></a></li>
+                            <li><button class="btn btn-xs btn-default" id="show_all">All <span class="badge" style="background-color: #007bff">'.$all.'</span></button></li>
+                            <li><button class="btn btn-xs btn-default" id="show_active">Active <span class="badge" style="background-color: #28a745">'.$active.'</span></button></li>
+                            <li><button class="btn btn-xs btn-default" id="show_suspended">Suspended <span class="badge" style="background-color: #dc3545">'.$suspended.'</span></button></li>
                         </ul>
                     </div>
                 </th>

@@ -1,13 +1,9 @@
 <?php
-    /* konektujemo se na db */
     $host = '127.0.0.1';
     $user = 'root';
-    $password = '';
-    $databasename = 'test_db';
-    $connect = mysqli_connect($host, $user, $password, $databasename);
-
-    /* izlazna var (data) */
-    $output = '';
+    $pw = '';
+    $db = 'test_db';
+    $connect = mysqli_connect($host, $user, $pw, $db);
 
     /* sql upit za select user-a iz db */
     $sqlquery = "SELECT * FROM tbl_users ORDER BY id DESC";
@@ -22,7 +18,7 @@
     $result2 = mysqli_query($connect, $sqlSuspendedUsers);
     $suspended = mysqli_num_rows($result2);
 
-    $output .= '
+    $output = '
     <table class="table">
         <thead>
             <tr>
@@ -46,11 +42,10 @@
                 <th></th>
             </tr>
         </thead>';
-    
-    /* ako ima vise od 0 usera ispisujemo ih */
-    if (mysqli_num_rows($result) > 0) { // ako ima rezultata
+
+    if ($suspended > 0) {
         $output .= '<tbody>';
-        while($row = mysqli_fetch_array($result)) {
+        while($row = mysqli_fetch_array($result2)) {
             $output .= '
             <tr>
                 <td>' . $row['id'] . '</td>
@@ -58,16 +53,12 @@
                 <td>' . $row['email'] . '</td>
                 <td>' . $row['skype'] . '</td>
                 <td>' . $row['balance'] . '</td>';
-                if ($row['status'] < 1) {
-                    $output .= '<td>Suspended</td><td><button class="btn btn-xs btn-success" id="btn_active" data-id1="'.$row['id'].'">Active user</button></td>';
-                } else {
-                    $output .= '<td>Active</td><td><button class="btn btn-xs btn-danger" id="btn_suspend" data-id1="'.$row['id'].'">Suspend user</button></td>';
-                }
+                $output .= '<td>Suspended</td><td><button class="btn btn-xs btn-success" id="btn_active" data-id1="'.$row['id'].'">Activate user</button></td>';
             $output .= '</tr>';
         }
 
         $output .= '</tbody>';
-    } else { // ako nema rezultata
+    } else {
         $output .= '
         <tbody>
             <tr>
