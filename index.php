@@ -85,7 +85,7 @@
         </div>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" name="addUser" id="addUser">Add user</button>
+            <button type="submit" class="btn btn-primary has-spinner" name="addUser" id="addUser">Add user</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
     </div>

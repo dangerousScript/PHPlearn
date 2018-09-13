@@ -12,6 +12,15 @@
     /* sql upit za select user-a iz db */
     $sqlquery = "SELECT * FROM tbl_users ORDER BY id DESC";
     $result = mysqli_query($connect, $sqlquery);
+    $all = mysqli_num_rows($result);
+
+    $sqlActiveUsers = "SELECT * FROM tbl_users WHERE status = 1";
+    $result1 = mysqli_query($connect, $sqlActiveUsers);
+    $active = mysqli_num_rows($result1);
+
+    $sqlSuspendedUsers = "SELECT * FROM tbl_users WHERE status = 0";
+    $result2 = mysqli_query($connect, $sqlSuspendedUsers);
+    $suspended = mysqli_num_rows($result2);
 
     $output .= '
     <table class="table">
@@ -22,7 +31,18 @@
                 <th>Email</th>
                 <th>Skype</th>
                 <th>Balance</th>
-                <th>Status</th>
+                <th class="dropdown-th">
+                    <div class="dropdown">
+                        <button class="btn btn-th btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Status<span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">All <span class="badge" style="background-color: #007bff">'.$all.'</span></a></li>
+                            <li><a href="#">Active <span class="badge" style="background-color: #28a745">'.$active.'</span></a></li>
+                            <li><a href="#">Suspended <span class="badge" style="background-color: #dc3545">'.$suspended.'</span></a></li>
+                        </ul>
+                    </div>
+                </th>
                 <th></th>
             </tr>
         </thead>';
