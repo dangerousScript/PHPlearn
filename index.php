@@ -43,7 +43,7 @@
     <div class="container-fluid">
         <ul class="nav nav-tabs">
             <li class="p-b">
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#createUserModal" disabled>Add user</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#createUserModal">Add user</button>
             </li>
         </ul>
 
@@ -52,6 +52,45 @@
         <div id="list_users"></div>         <!-- ako ima user-a izlistamo ih sve -->
         <!-- end of list -->
     </div>
+
+    <!-- create user Modal -->
+    <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add user</h4>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="control-label">Username</label>
+                <input class="form-control" type="text" id="usernameNew" require>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <input class="form-control" type="text" id="emailNew" require>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Skype</label>
+                <input class="form-control" type="text" id="skypeNew">
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Password</label>
+                <input class="form-control" type="password" id="passwordNew" require>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" name="addUser" id="addUser">Add user</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>
 
     <!-- scripte za obradu podataka iz db -->
     <script type="text/javascript">
@@ -96,6 +135,24 @@
                         }
                     });
                 }
+            });
+
+            $('#addUser').click(function () {
+                var username_new = $('#usernameNew').val();
+                var email_new = $('#emailNew').val();
+                var skype_new = $('#skypeNew').val();
+                var password_new = $('#passwordNew').val();
+
+                $.ajax({
+                    url: 'add_user.php',
+                    method: 'POST',
+                    data: {username: username_new, email: email_new, skype: skype_new, password: password_new},
+                    dataType: 'text',
+                    success: function (data) {
+                        $('#print_result').html("<div class='alert alert-success'>"+data+"</div>");
+                        fetch_data();
+                    }
+                });
             });
         });
     </script>
