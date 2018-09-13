@@ -34,6 +34,7 @@
         <div class="collapse navbar-collapse" id="bs-navbar-collapse">
             <ul id="w1" class="nav navbar-nav">
                 <li class="active"><a href="/listusers/">Users</a></li>
+                <li><a href="/listusers/todo_list.php">Create ToDo List</a></li>
             </ul>       
         </div>
       </div>
@@ -135,7 +136,7 @@
         $(document).ready(function () {
             function fetch_data() {
                 $.ajax({
-                    url: "select.php",
+                    url: "/listusers/functions/select.php",
                     method: "POST",
                     success: function (data) {
                         $('#list_users').html(data);
@@ -147,7 +148,7 @@
                 var id = $(this).data('id1');
                 if (confirm('Are you sure you want to active this user?')) {
                     $.ajax({
-                        url: 'active.php',
+                        url: '/listusers/functions/active.php',
                         method: 'POST',
                         data: {id_active: id},
                         dataType: 'text',
@@ -163,7 +164,7 @@
                 var id = $(this).data('id1');
                 if (confirm('Are you sure you want to suspend this user?')) {
                     $.ajax({
-                        url: 'suspend.php',
+                        url: '/listusers/functions/suspend.php',
                         method: 'POST',
                         data: {id_suspend: id},
                         dataType: 'text',
@@ -182,7 +183,7 @@
                 var password_new = $('#passwordNew').val();
 
                 $.ajax({
-                    url: 'add_user.php',
+                    url: '/listusers/functions/add_user.php',
                     method: 'POST',
                     data: {username: username_new, email: email_new, skype: skype_new, password: password_new},
                     dataType: 'text',
@@ -197,7 +198,7 @@
                 var search = $('#querySearch').val();
 
                 $.ajax({
-                    url: 'find_user.php',
+                    url: '/listusers/functions/find_user.php',
                     method: 'POST',
                     data: {search: search},
                     dataType: 'text',
@@ -212,7 +213,7 @@
                 var username = $('#usernameBalance').val();
 
                 $.ajax({
-                    url: 'add_balance.php',
+                    url: '/listusers/functions/add_balance.php',
                     method: 'POST',
                     data: {amount: amount, username: username},
                     dataType: 'text',
@@ -225,7 +226,7 @@
 
             $(document).on('click', '#show_active', function () {
                 $.ajax({
-                    url: 'show_active.php',
+                    url: '/listusers/functions/show_active.php',
                     method: 'POST',
                     success: function (data) {
                         $('#list_users').html(data);
@@ -239,7 +240,7 @@
 
             $(document).on('click', '#show_suspended', function () {
                 $.ajax({
-                    url: 'show_suspended.php',
+                    url: '/listusers/functions/show_suspended.php',
                     method: 'POST',
                     success: function (data) {
                         $('#list_users').html(data);
