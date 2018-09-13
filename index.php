@@ -66,6 +66,37 @@
                 });
             }
             fetch_data(); /* poziv f-je */
+            $(document).on('click', '#btn_active', function () {
+                var id = $(this).data('id1');
+                if (confirm('Are you sure you want to active this user?')) {
+                    $.ajax({
+                        url: 'active.php',
+                        method: 'POST',
+                        data: {id_active: id},
+                        dataType: 'text',
+                        success: function (data) {
+                            $('#print_result').html("<div class='alert alert-success'>"+data+"</div>");
+                            fetch_data();
+                        }
+                    });
+                }
+            });
+
+            $(document).on('click', '#btn_suspend', function () {
+                var id = $(this).data('id1');
+                if (confirm('Are you sure you want to suspend this user?')) {
+                    $.ajax({
+                        url: 'suspend.php',
+                        method: 'POST',
+                        data: {id_suspend: id},
+                        dataType: 'text',
+                        success: function (data) {
+                            $('#print_result').html("<div class='alert alert-danger'>"+data+"</div>");
+                            fetch_data();
+                        }
+                    });
+                }
+            });
         });
     </script>
     <!-- kraj za scripte -->

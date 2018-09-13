@@ -39,9 +39,9 @@
                 <td>' . $row['skype'] . '</td>
                 <td>' . $row['balance'] . '</td>';
                 if ($row['status'] < 1) {
-                    $output .= '<td>Suspended</td><td><button class="btn btn-xs btn-success">Active user</button></td>';
+                    $output .= '<td>Suspended</td><td><button class="btn btn-xs btn-success" id="btn_active" data-id1="'.$row['id'].'">Active user</button></td>';
                 } else {
-                    $output .= '<td>Active</td><td><button class="btn btn-xs btn-danger">Suspend user</button></td>';
+                    $output .= '<td>Active</td><td><button class="btn btn-xs btn-danger" id="btn_suspend" data-id1="'.$row['id'].'">Suspend user</button></td>';
                 }
             $output .= '</tr>';
         }
