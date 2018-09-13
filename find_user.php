@@ -37,9 +37,9 @@
                             Status<span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><button class="btn btn-xs btn-default" id="show_all">All <span class="badge" style="background-color: #007bff">'.$all.'</span></button></li>
-                            <li><button class="btn btn-xs btn-default" id="show_active">Active <span class="badge" style="background-color: #28a745">'.$active.'</span></button></li>
-                            <li><button class="btn btn-xs btn-default" id="show_suspended">Suspended <span class="badge" style="background-color: #dc3545">'.$suspended.'</span></button></li>
+                            <li><button class="btn btn-xs btn-default" id="show_all" style="width: 200px;">All <span class="badge" style="background-color: #007bff">'.$all.'</span></button></li>
+                            <li><button class="btn btn-xs btn-default" id="show_active" style="width: 200px;">Active <span class="badge" style="background-color: #28a745">'.$active.'</span></button></li>
+                            <li><button class="btn btn-xs btn-default" id="show_suspended" style="width: 200px;">Suspended <span class="badge" style="background-color: #dc3545">'.$suspended.'</span></button></li>
                         </ul>
                     </div>
                 </th>
