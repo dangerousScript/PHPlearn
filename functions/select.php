@@ -1,10 +1,6 @@
 <?php
     /* konektujemo se na db */
-    $host = '127.0.0.1';
-    $user = 'root';
-    $password = '';
-    $databasename = 'test_db';
-    $connect = mysqli_connect($host, $user, $password, $databasename);
+    require_once 'config.php';
 
     /* izlazna var (data) */
     $output = '';
@@ -46,7 +42,7 @@
                 <th></th>
             </tr>
         </thead>';
-    
+
     /* ako ima vise od 0 usera ispisujemo ih */
     if (mysqli_num_rows($result) > 0) { // ako ima rezultata
         $output .= '<tbody>';

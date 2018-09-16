@@ -1,9 +1,5 @@
 <?php
-    $host = '127.0.0.1';
-    $user = 'root';
-    $pw = '';
-    $dbname = 'test_db';
-    $connect = mysqli_connect($host, $user, $pw, $dbname);
+    require_once 'config.php';
 
     $output = '';
 
@@ -64,7 +60,7 @@
                     }
                 $output .= '</tr>';
             }
-    
+
             $output .= '</tbody>';
         } else { // ako nema rezultata
             $output .= '
@@ -74,8 +70,8 @@
                 </tr>
             </tbody>';
         }
-    
+
         $output .= '</table>';
-    
+
         echo $output;
 ?>

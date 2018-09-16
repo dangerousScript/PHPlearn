@@ -1,9 +1,5 @@
 <?php
-    $host = '127.0.0.1';
-    $user = 'root';
-    $pw = '';
-    $dbname = 'test_db';
-    $connect = mysqli_connect($host, $user, $pw, $dbname);
+    require_once 'config.php';
 
     $username = $_POST['username'];
     $email = $_POST['email'];

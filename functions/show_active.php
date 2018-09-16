@@ -1,9 +1,5 @@
 <?php
-    $host = '127.0.0.1';
-    $user = 'root';
-    $pw = '';
-    $db = 'test_db';
-    $connect = mysqli_connect($host, $user, $pw, $db);
+    require_once 'config.php';
 
     /* sql upit za select user-a iz db */
     $sqlquery = "SELECT * FROM tbl_users ORDER BY id DESC";
