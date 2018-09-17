@@ -13,6 +13,7 @@
     <link href="/listusers/css/bootstrap.min.css" rel="stylesheet">
     <link href="/listusers/css/custom.css" rel="stylesheet">
     <link href="/listusers/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="/listusers/css/custom-table.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
@@ -35,7 +36,7 @@
             <ul id="w1" class="nav navbar-nav">
                 <li class="active"><a href="/listusers/">Users</a></li>
                 <li><a href="/listusers/todo_list.php">Create ToDo List</a></li>
-            </ul>       
+            </ul>
         </div>
       </div>
     </nav>
@@ -207,7 +208,7 @@
                     }
                 });
             });
-            
+
             $('#addBalance').click(function () {
                 var amount = $('#amountBalance').val();
                 var username = $('#usernameBalance').val();

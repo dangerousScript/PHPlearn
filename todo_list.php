@@ -13,6 +13,7 @@
     <link href="/listusers/css/bootstrap.min.css" rel="stylesheet">
     <link href="/listusers/css/custom.css" rel="stylesheet">
     <link href="/listusers/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="/listusers/css/custom-table.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
@@ -55,7 +56,18 @@
 
     <!-- scripte za obradu podataka iz db -->
     <script type="text/javascript">
-
+        $(document).ready(function () {
+            function print_todo_list() {
+                $.ajax({
+                    url: '/listusers/todo_func/print_todo.php',
+                    method: 'POST',
+                    success: function (data) {
+                        $('#todo_list').html(data);
+                    }
+                });
+            }
+            print_todo_list();
+        });
     </script>
     <!-- kraj za scripte -->
 </body>
