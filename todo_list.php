@@ -45,13 +45,42 @@
     <div class="container-fluid">
         <ul class="nav nav-tabs">
             <li class="p-b">
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#createUserModal">Create new ToDo</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#createTODOModal">Create new ToDo</button>
             </li>
         </ul>
         <!-- list of users -->
         <span id="print_result2"></span>     <!-- ispisemo uspesnu/neuspesnu poruku nakon akcije -->
         <div id="todo_list"></div>         <!-- ako ima user-a izlistamo ih sve -->
         <!-- end of list -->
+    </div>
+
+    <!-- create TODO Modal -->
+    <div class="modal fade" id="createTODOModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add TODO</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="control-label">Title</label>
+                        <input class="form-control" type="text" id="titleNew" require>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Description</label>
+                        <textarea id="descriptionNew" class="form-control custom-width" rows="3" required="required"></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary has-spinner" name="addToDo" id="addToDo" data-dismiss="modal">Add</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- scripte za obradu podataka iz db -->
@@ -66,7 +95,55 @@
                     }
                 });
             }
+            // ispis liste
             print_todo_list();
+
+            // dodavanje novog u listu
+            $('#addToDo').click(function () {
+                var title = $('#titleNew').val();
+                var description = $('#descriptionNew').val();
+
+                $.ajax({
+                    url: '/listusers/todo_func/add_todo.php',
+                    method: 'POST',
+                    data: {title: title, description: description},
+                    dataType: 'text',
+                    success: function (data) {
+                        $('#print_result2').html("<div class='alert alert-success'>"+data+"</div>");
+                        print_todo_list();
+                    }
+                });
+            });
+
+            // zavrsen TODO
+            $(document).on('click', '#finishTodo', function () {
+                var idFinish = $(this).data('id1');
+                $.ajax({
+                    url: '/listusers/todo_func/finish_todo.php',
+                    method: 'POST',
+                    data: {idFinish: idFinish},
+                    dataType: 'text',
+                    success: function (data) {
+                        $('#print_result2').html("<div class='alert alert-success'>"+data+"</div>");
+                        print_todo_list();
+                    }
+                });
+            });
+
+            // cancel TODO
+            $(document).on('click', '#cancelTodo', function () {
+                var idCancel = $(this).data('id1');
+                $.ajax({
+                    url: '/listusers/todo_func/cancel_todo.php',
+                    method: 'POST',
+                    data: {idCancel: idCancel},
+                    dataType: 'text',
+                    success: function (data) {
+                        $('#print_result2').html("<div class='alert alert-danger'>"+data+"</div>");
+                        print_todo_list();
+                    }
+                });
+            });
         });
     </script>
     <!-- kraj za scripte -->

@@ -9,3 +9,8 @@
 .canceled {
     background-color: #ec9c9c;
 }
+
+.custom-width {
+    min-width: 200px;
+    max-width: 568px;
+}

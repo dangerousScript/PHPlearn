@@ -29,7 +29,7 @@
                     <td>' . $row['title'] . '</td>
                     <td>' . $row['description'] . '</td>
                     <td>Pending</td>
-                    <td colspan="2" style="width: 50px;"><button class="btn btn-xs btn-default">Finish</button>&nbsp;<button class="btn btn-xs btn-warning">Cancel</button></td>
+                    <td colspan="2" style="width: 50px;"><button class="btn btn-xs btn-default" id="finishTodo" data-id1="'. $row['id'] .'">Finish</button>&nbsp;<button class="btn btn-xs btn-warning" id="cancelTodo" data-id1="'. $row['id'] .'">Cancel</button></td>
                 </tr>';
             } else if ($row['status'] == 1) {
                 $output .= '
