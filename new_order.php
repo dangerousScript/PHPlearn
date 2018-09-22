@@ -36,6 +36,7 @@
             <ul id="w1" class="nav navbar-nav">
                 <li><a href="/listusers/">Users</a></li>
                 <li><a href="/listusers/todo_list.php">Create ToDo List</a></li>
+                <li><a href="/listusers/services.php">Services</a></li>
                 <li class="active"><a href="/listusers/new_order.php">New Order</a></li>
             </ul>
         </div>
@@ -44,10 +45,33 @@
 
     <!-- content -->
     <div class="container">
-        <!-- list of services & categories -->
-        <span id="order_result"></span>     <!-- ispisemo uspesnu/neuspesnu poruku nakon akcije -->
-        <div id="list_users"></div>         <!-- ako ima user-a izlistamo ih sve -->
-        <!-- end of list -->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+            <span id="order_result"></span>     <!-- ispisemo uspesnu/neuspesnu poruku nakon akcije -->
+                <div class="well">
+                    <!-- list of services & categories -->
+                    <form action="neworder_funcs/create_order.php" action="post" id="order-form">
+                        <div class="form-group">
+                            <label for="order-category" class="control-label">Category</label>
+                            <select class="form-control" id="order-category" name="order-category">
+                            <?php
+                                require_once 'functions/config.php';
+                                $sqlquery = "SELECT * FROM tbl_category WHERE status = 1 ORDER BY id DESC";
+                                $result = mysqli_query($connect, $sqlquery);
+                                if (mysqli_num_rows($result) > 0) {
+                                    while($row = mysqli_fetch_array($result)) {
+                                        echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+                                    }
+                                }
+                            ?>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <!-- end of list -->
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- scripts -->

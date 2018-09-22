@@ -36,6 +36,7 @@
             <ul id="w1" class="nav navbar-nav">
                 <li class="active"><a href="/listusers/">Users</a></li>
                 <li><a href="/listusers/todo_list.php">Create ToDo List</a></li>
+                <li><a href="/listusers/services.php">Services</a></li>
                 <li><a href="/listusers/new_order.php">New Order</a></li>
             </ul>
         </div>
