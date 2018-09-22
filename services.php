@@ -65,7 +65,6 @@
         <div id="list_services">
             <table class="table">
                 <thead>
-                    <th></th>
                     <th>ID</th>
                     <th>Service</th>
                     <th>Type</th>
@@ -86,9 +85,11 @@
                         if ($row > 0) {
                             echo '<tbody>';
                             while ($rows = mysqli_fetch_array($result)) {
+                                $getservices = "SELECT * FROM tbl_services WHERE category_id = '".$rows['id']."' ORDER BY id DESC";
+                                $result_services = mysqli_query($connect, $getservices);
                                 echo '
                                     <tr style="background-color: #899dd6;">
-                                        <td colspan="10"><strong>' . $rows['name'] .'</strong> ';
+                                        <td colspan="9"><strong>' . $rows['name'] .'</strong> ';
                                         if ($rows['status'] == 0) {
                                             echo '<span class="badge">Disabled</span>';
                                         } else {
@@ -96,6 +97,22 @@
                                         }
                                     echo '</td>
                                     </tr>';
+                                    if (mysqli_num_rows($result_services) > 0) {
+                                        while($rows_services = mysqli_fetch_array($result_services)) {
+                                            /* TODO: izmeniti service type u text */
+                                            echo '
+                                                <tr>
+                                                    <td>'.$rows_services['id'].'</td>
+                                                    <td>'.$rows_services['service_name'].'</td>
+                                                    <td>'.$rows_services['service_type'].'</td>
+                                                    <td>'.$rows_services['provider'].'</td>
+                                                    <td>'.number_format($rows_services['service_rate'], 2, '.', '').'</td>
+                                                    <td>'.$rows_services['min_quantity'].'</td>
+                                                    <td>'.$rows_services['max_quantity'].'</td>
+                                                    <td>'.$rows_services['status'].'</td>
+                                                </tr>';
+                                        }
+                                    }
                             }
 
                             echo '</tbody>';
