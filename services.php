@@ -48,7 +48,7 @@
         <ul class="nav nav-tabs">
             <li class="p-b">
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#createCategoryModal">Add category</button>
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#createServiceModal" disabled>Add service</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#createServiceModal">Add service</button>
                 <li class="pull-right p-b">
                     <div class="input-group" style="width: 350px;">
                         <input type="text" class="form-control" id="querySearch" placeholder="Search">
@@ -109,6 +109,7 @@
         <!-- end of list -->
     </div>
 
+    <!-- category modal -->
     <div class="modal fade" id="createCategoryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -126,6 +127,88 @@
 
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary has-spinner" name="addCategory" id="addCategory" data-dismiss="modal">Add category</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- services modal -->
+    <div class="modal fade" id="createServiceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add service</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-group__service-name">Service name <span class="badge">English US</span></label>
+                        <input class="form-control" type="text" id="serviceName" require>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select class="form-control" id="category_select">
+                            <?php
+                                require_once 'functions/config.php';
+                                $sqlquery = "SELECT * FROM tbl_category ORDER BY id DESC";
+                                $result = mysqli_query($connect, $sqlquery);
+                                if (mysqli_num_rows($result) > 0) {
+                                    while ($row = mysqli_fetch_array($result)) {
+                                        echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+                                    }
+                                }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Service type</label>
+                        <select class="form-control" id="type_select">
+                            <option value="0">Default</option>
+                            <option value="1">Custom Comments</option>
+                            <option value="2">Mentions</option>
+                            <option value="3">Package</option>
+                            <option value="4">Comment Likes</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Provider</label>
+                        <input class="form-control" type="text" id="my_provider" require>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rate per 1000</label>
+                        <input class="form-control" type="number" id="rate_service" min="0" step="0.001" require>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Min order</label>
+                                <input type="number" id="min_qua" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Max order</label>
+                                <input type="number" id="max_qua" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-group__service-name">Description <span class="badge">English US</span></label>
+                        <textarea class="form-control" id="service_description" rows="7"></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary has-spinner" name="addService" id="addService" data-dismiss="modal">Add service</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>

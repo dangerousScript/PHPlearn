@@ -75,6 +75,6 @@
     </div>
 
     <!-- scripts -->
-    <script src="js/new_order_func.js"></script>
+    <script src=""></script>
 </body>
 </html>
