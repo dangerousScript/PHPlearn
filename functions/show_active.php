@@ -66,4 +66,3 @@
     $output .= '</table>';
 
     echo $output;
-?>

@@ -3,13 +3,13 @@ $(document).ready(function () {
         var categoryName = $('#categoryNew').val();
 
         $.ajax({
-            url: '/listusers/neworder_funcs/create_category.php',
+            url: '/phplearn/neworder_funcs/create_category.php',
             method: 'POST',
             data: {categoryName: categoryName},
             dataType: 'text',
             success: function (data) {
                 $('#print_result3').html("<div class='alert alert-success'>"+data+"</div>");
-                $(location).attr('href', '/listusers/services.php');
+                $(location).attr('href', '/phplearn/services.php');
             }
         });
     });
@@ -25,7 +25,7 @@ $(document).ready(function () {
         var serviceDescription = $('#service_description').val();
 
         $.ajax({
-            url: '/listusers/neworder_funcs/create_service.php',
+            url: '/phplearn/neworder_funcs/create_service.php',
             method: 'POST',
             data: { servicename: servicename, categoryId: categoryId,
                     serviceType: serviceType, provider: provider,
@@ -34,7 +34,7 @@ $(document).ready(function () {
             dataType: 'text',
             success: function (data) {
                 $('#print_result3').html("<div class='alert alert-success'>"+data+"</div>");
-                $(location).attr('href', '/listusers/services.php');
+                $(location).attr('href', '/phplearn/services.php');
             }
         });
     });

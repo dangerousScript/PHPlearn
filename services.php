@@ -9,11 +9,11 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link href="/listusers/css/font-awesome.min.css?v=1536827640" rel="stylesheet">
-    <link href="/listusers/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/listusers/css/custom.css" rel="stylesheet">
-    <link href="/listusers/css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="/listusers/css/custom-table.css" rel="stylesheet">
+    <link href="/phplearn/css/font-awesome.min.css?v=1536827640" rel="stylesheet">
+    <link href="/phplearn/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/phplearn/css/custom.css" rel="stylesheet">
+    <link href="/phplearn/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="/phplearn/css/custom-table.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
@@ -34,10 +34,10 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-navbar-collapse">
             <ul id="w1" class="nav navbar-nav">
-                <li><a href="/listusers/">Users</a></li>
-                <li><a href="/listusers/todo_list.php">Create ToDo List</a></li>
-                <li class="active"><a href="/listusers/services.php">Services</a></li>
-                <li><a href="/listusers/new_order.php">New Order</a></li>
+                <li><a href="/phplearn/">Users</a></li>
+                <li><a href="/phplearn/todo_list.php">Create ToDo List</a></li>
+                <li class="active"><a href="/phplearn/services.php">Services</a></li>
+                <li><a href="/phplearn/new_order.php">New Order</a></li>
             </ul>
         </div>
       </div>
@@ -99,8 +99,8 @@
                                     </tr>';
                                     if (mysqli_num_rows($result_services) > 0) {
                                         while($rows_services = mysqli_fetch_array($result_services)) {
-                                            /* TODO: izmeniti service type u text */
-                                            echo '
+                                            /* TODO: izmeniti service type u text */                                            
+                                           echo '
                                                 <tr>
                                                     <td>'.$rows_services['id'].'</td>
                                                     <td>'.$rows_services['service_name'].'</td>

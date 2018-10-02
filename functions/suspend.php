@@ -7,4 +7,3 @@
     if (mysqli_query($connect, $sqlquery)) {
         echo 'User ID: ' . $id . ' suspended!';
     }
-?>

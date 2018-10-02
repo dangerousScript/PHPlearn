@@ -8,4 +8,3 @@
     if (mysqli_query($connect, $sqlquery)) {
         echo 'You have added: ' . $amount . '$ to user: ' . $username;
     }
-?>

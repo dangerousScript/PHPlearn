@@ -10,4 +10,3 @@
     if (mysqli_query($connect, $sqlquery)) {
         echo 'Username: ' . $username . ' added!';
     }
-?>

@@ -2,9 +2,9 @@
 
     /* konekcija za db */
     $connection = array(
-        'host' => '127.0.0.1',
+        'host' => 'localhost',
         'username' => 'root',
-        'password' => '',
+        'password' => 'root',
         'databasename' => 'test_db'
     );
 

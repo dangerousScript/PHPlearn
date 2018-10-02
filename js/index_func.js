@@ -1,7 +1,7 @@
 $(document).ready(function () {
     function fetch_data() {
         $.ajax({
-            url: "/listusers/functions/select.php",
+            url: "/phplearn/functions/select.php",
             method: "POST",
             success: function (data) {
                 $('#list_users').html(data);
@@ -13,7 +13,7 @@ $(document).ready(function () {
         var id = $(this).data('id1');
         if (confirm('Are you sure you want to active this user?')) {
             $.ajax({
-                url: '/listusers/functions/active.php',
+                url: '/phplearn/functions/active.php',
                 method: 'POST',
                 data: {id_active: id},
                 dataType: 'text',
@@ -29,7 +29,7 @@ $(document).ready(function () {
         var id = $(this).data('id1');
         if (confirm('Are you sure you want to suspend this user?')) {
             $.ajax({
-                url: '/listusers/functions/suspend.php',
+                url: '/phplearn/functions/suspend.php',
                 method: 'POST',
                 data: {id_suspend: id},
                 dataType: 'text',
@@ -48,7 +48,7 @@ $(document).ready(function () {
         var password_new = $('#passwordNew').val();
 
         $.ajax({
-            url: '/listusers/functions/add_user.php',
+            url: '/phplearn/functions/add_user.php',
             method: 'POST',
             data: {username: username_new, email: email_new, skype: skype_new, password: password_new},
             dataType: 'text',
@@ -63,7 +63,7 @@ $(document).ready(function () {
         var search = $('#querySearch').val();
 
         $.ajax({
-            url: '/listusers/functions/find_user.php',
+            url: '/phplearn/functions/find_user.php',
             method: 'POST',
             data: {search: search},
             dataType: 'text',
@@ -78,7 +78,7 @@ $(document).ready(function () {
         var username = $('#usernameBalance').val();
 
         $.ajax({
-            url: '/listusers/functions/add_balance.php',
+            url: '/phplearn/functions/add_balance.php',
             method: 'POST',
             data: {amount: amount, username: username},
             dataType: 'text',
@@ -91,7 +91,7 @@ $(document).ready(function () {
 
     $(document).on('click', '#show_active', function () {
         $.ajax({
-            url: '/listusers/functions/show_active.php',
+            url: '/phplearn/functions/show_active.php',
             method: 'POST',
             success: function (data) {
                 $('#list_users').html(data);
@@ -105,7 +105,7 @@ $(document).ready(function () {
 
     $(document).on('click', '#show_suspended', function () {
         $.ajax({
-            url: '/listusers/functions/show_suspended.php',
+            url: '/phplearn/functions/show_suspended.php',
             method: 'POST',
             success: function (data) {
                 $('#list_users').html(data);

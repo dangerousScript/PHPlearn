@@ -1,7 +1,7 @@
 $(document).ready(function () {
     function print_todo_list() {
         $.ajax({
-            url: '/listusers/todo_func/print_todo.php',
+            url: '/phplearn/todo_func/print_todo.php',
             method: 'POST',
             success: function (data) {
                 $('#todo_list').html(data);
@@ -17,7 +17,7 @@ $(document).ready(function () {
         var description = $('#descriptionNew').val();
 
         $.ajax({
-            url: '/listusers/todo_func/add_todo.php',
+            url: '/phplearn/todo_func/add_todo.php',
             method: 'POST',
             data: {title: title, description: description},
             dataType: 'text',
@@ -32,7 +32,7 @@ $(document).ready(function () {
     $(document).on('click', '#finishTodo', function () {
         var idFinish = $(this).data('id1');
         $.ajax({
-            url: '/listusers/todo_func/finish_todo.php',
+            url: '/phplearn/todo_func/finish_todo.php',
             method: 'POST',
             data: {idFinish: idFinish},
             dataType: 'text',
@@ -47,7 +47,7 @@ $(document).ready(function () {
     $(document).on('click', '#cancelTodo', function () {
         var idCancel = $(this).data('id1');
         $.ajax({
-            url: '/listusers/todo_func/cancel_todo.php',
+            url: '/phplearn/todo_func/cancel_todo.php',
             method: 'POST',
             data: {idCancel: idCancel},
             dataType: 'text',
