@@ -98,19 +98,38 @@
                                     echo '</td>
                                     </tr>';
                                     if (mysqli_num_rows($result_services) > 0) {
-                                        while($rows_services = mysqli_fetch_array($result_services)) {
-                                            /* TODO: izmeniti service type u text */                                            
+                                        while($rows_services = mysqli_fetch_array($result_services)) {                                           
                                            echo '
                                                 <tr>
                                                     <td>'.$rows_services['id'].'</td>
-                                                    <td>'.$rows_services['service_name'].'</td>
-                                                    <td>'.$rows_services['service_type'].'</td>
-                                                    <td>'.$rows_services['provider'].'</td>
+                                                    <td>'.$rows_services['service_name'].'</td>';
+                                                    if ($rows_services['service_type'] == 0) {
+                                                        echo '<td>Default</td>';
+                                                    } elseif ($rows_services['service_type'] == 1) {
+                                                        echo '<td>Custom Comments</td>';
+                                                    } elseif ($rows_services['service_type'] == 2) {
+                                                        echo '<td>Mentions</td>';
+                                                    } elseif ($rows_services['service_type'] == 3) {
+                                                        echo '<td>Package</td>';
+                                                    } else {
+                                                        echo '<td>Comment Likes</td>';
+                                                    }
+                                                    
+                                                    echo '<td>'.$rows_services['provider'].'</td>
                                                     <td>'.number_format($rows_services['service_rate'], 2, '.', '').'</td>
                                                     <td>'.$rows_services['min_quantity'].'</td>
-                                                    <td>'.$rows_services['max_quantity'].'</td>
-                                                    <td>'.$rows_services['status'].'</td>
-                                                </tr>';
+                                                    <td>'.$rows_services['max_quantity'].'</td>';
+                                                    
+                                                    // TODO: implement functions to disable/enable services
+                                                    if ($rows_services['status']) {
+                                                        echo '<td>Enabled</td>
+                                                            <td><button class="btn btn-xs btn-default" id="disable_service">Disable service</button></td>
+                                                        </tr>';
+                                                    } else {
+                                                        echo '<td>Disabled</td>
+                                                            <td><button class="btn btn-xs btn-default" id="enable_service">Enable service</button></td>
+                                                        </tr>';
+                                                    }
                                         }
                                     }
                             }
@@ -234,5 +253,13 @@
 
     <!-- scripts -->
     <script src="js/services_func.js"></script>
+    <script type="text/javascript">
+        if((location.pathname).indexOf('/phplearn/services.php') >= 0) {
+            jQuery('.table td:contains("Disabled")')
+                .parent('tr')
+                .css('background-color', '#a2a5a4')
+                .css('color','#fff');
+        };
+    </script>
 </body>
 </html>

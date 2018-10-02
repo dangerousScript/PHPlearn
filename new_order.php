@@ -63,6 +63,7 @@
                                         echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
                                     }
                                 }
+                                // TODO: list services for selected category
                             ?>
                             </select>
                         </div>
