@@ -60,7 +60,7 @@
             </li>
         </ul>
 
-        <!-- list of users -->
+        <!-- list of services -->
         <span id="print_result3"></span>     <!-- ispisemo uspesnu/neuspesnu poruku nakon akcije -->
         <div id="list_services">
             <table class="table">
