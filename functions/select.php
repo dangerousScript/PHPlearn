@@ -53,7 +53,7 @@
                 <td>' . $row['username'] . '</td>
                 <td>' . $row['email'] . '</td>
                 <td>' . $row['skype'] . '</td>
-                <td>' . $row['balance'] . '</td>';
+                <td>' . number_format($row['balance'], 2, '.', '') . '</td>';
                 if ($row['status'] < 1) {
                     $output .= '<td>Suspended</td><td><button class="btn btn-xs btn-success" id="btn_active" data-id1="'.$row['id'].'">Active user</button></td>';
                 } else {
