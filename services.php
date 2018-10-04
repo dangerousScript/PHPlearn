@@ -91,9 +91,9 @@
                                     <tr style="background-color: #899dd6;">
                                         <td colspan="9"><strong>' . $rows['name'] .'</strong> ';
                                         if ($rows['status'] == 0) {
-                                            echo '<span class="badge">Disabled</span>';
+                                            echo '<span class="badge">Invisible</span>';
                                         } else {
-                                            echo '<span class="badge">Enabled</span>';
+                                            echo '<span class="badge">Visible</span>';
                                         }
                                     echo '</td>
                                     </tr>';
@@ -123,11 +123,11 @@
                                                     // TODO: implement functions to disable/enable services
                                                     if ($rows_services['status']) {
                                                         echo '<td>Enabled</td>
-                                                            <td><button class="btn btn-xs btn-default" id="disable_service">Disable service</button></td>
+                                                            <td><button class="btn btn-xs btn-default" id="disable_service">Disable service</button>&nbsp;<button class="btn btn-xs btn-default" data-id1="'.$rows_services['id'].'" id="show_description_serv">Edit description</button></td>
                                                         </tr>';
                                                     } else {
                                                         echo '<td>Disabled</td>
-                                                            <td><button class="btn btn-xs btn-default" id="enable_service">Enable service</button></td>
+                                                            <td><button class="btn btn-xs btn-default" id="enable_service">Enable service</button>&nbsp;<button class="btn btn-xs btn-default" data-id1="'.$rows_services['id'].'" id="show_description_serv">Edit description</button></td>
                                                         </tr>';
                                                     }
                                         }
@@ -245,6 +245,31 @@
 
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary has-spinner" name="addService" id="addService" data-dismiss="modal">Add service</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- show descripiton Modal -->
+    <div class="modal fade" id="showDescriptionServiceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Description</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="control-label">Description</label>
+                        <textarea id="print_description_serv" class="form-control custom-width" rows="3">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary has-spinner" name="addToDo" id="addToDo" data-dismiss="modal" disabled>Save changes</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>

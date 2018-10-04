@@ -38,4 +38,19 @@ $(document).ready(function () {
             }
         });
     });
+
+    $(document).on('click', '#show_description_serv', function () {
+        var id_show_description = $(this).data('id1');
+        $('#showDescriptionServiceModal').modal('show');
+
+        $.ajax({
+            url: '/phplearn/neworder_funcs/show_service_description.php',
+            method: 'POST',
+            data: {id_show: id_show_description},
+            dataType: 'text',
+            success: function (data) {
+                $('#print_description_serv').html(data);
+            }
+        });
+    });
 });
