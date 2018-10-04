@@ -57,4 +57,20 @@ $(document).ready(function () {
             }
         });
     });
+
+    // show description for TODO
+    $(document).on('click', '#show_description', function () {
+        var id_show_description = $(this).data('id1');
+        $('#showDescriptionModal').modal('show');
+
+        $.ajax({
+            url: '/phplearn/todo_func/show_category_description.php',
+            method: 'POST',
+            data: {id_show: id_show_description},
+            dataType: 'text',
+            success: function (data) {
+                $('#print_description').html(data);
+            }
+        });
+    });
 });

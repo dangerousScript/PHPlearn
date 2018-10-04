@@ -27,7 +27,7 @@
                 <tr class="pending">
                     <td>' . $row['id'] . '</td>
                     <td>' . $row['title'] . '</td>
-                    <td>' . $row['description'] . '</td>
+                    <td><button class="btn btn-xs btn-default" data-id1="'.$row['id'].'" id="show_description">Show description</button></td>
                     <td>Pending</td>
                     <td colspan="2" style="width: 50px;"><button class="btn btn-xs btn-default" id="finishTodo" data-id1="'. $row['id'] .'">Finish</button>&nbsp;<button class="btn btn-xs btn-warning" id="cancelTodo" data-id1="'. $row['id'] .'">Cancel</button></td>
                 </tr>';
@@ -36,7 +36,7 @@
                 <tr class="completed">
                     <td>' . $row['id'] . '</td>
                     <td>' . $row['title'] . '</td>
-                    <td>' . $row['description'] . '</td>
+                    <td><button class="btn btn-xs btn-default" data-id1="'.$row['id'].'" id="show_description">Show description</button></td>
                     <td>Completed</td>
                     <td colspan="2" style="width: 50px;"><button class="btn btn-xs btn-default" disabled>Finish</button>&nbsp;<button class="btn btn-xs btn-warning" disabled>Cancel</button></td>
                 </tr>';
@@ -45,7 +45,7 @@
                 <tr class="canceled">
                     <td>' . $row['id'] . '</td>
                     <td>' . $row['title'] . '</td>
-                    <td>' . $row['description'] . '</td>
+                    <td><button class="btn btn-xs btn-default" data-id1="'.$row['id'].'" id="show_description">Show description</button></td>
                     <td>Canceled</td>
                     <td colspan="2" style="width: 50px;"><button class="btn btn-xs btn-default" disabled>Finish</button>&nbsp;<button class="btn btn-xs btn-warning" disabled>Cancel</button></td>
                 </tr>';
