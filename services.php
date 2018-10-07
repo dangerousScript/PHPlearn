@@ -119,15 +119,14 @@
                                                     <td>'.number_format($rows_services['service_rate'], 2, '.', '').'</td>
                                                     <td>'.$rows_services['min_quantity'].'</td>
                                                     <td>'.$rows_services['max_quantity'].'</td>';
-                                                    
-                                                    // TODO: implement functions to disable/enable services
+
                                                     if ($rows_services['status']) {
                                                         echo '<td>Enabled</td>
-                                                            <td><button class="btn btn-xs btn-default" id="disable_service">Disable service</button>&nbsp;<button class="btn btn-xs btn-default" data-id1="'.$rows_services['id'].'" id="show_description_serv">Edit description</button></td>
+                                                            <td><button class="btn btn-xs btn-default" id="disable_service" data-id1="'.$rows_services['id'].'">Disable service</button>&nbsp;<button class="btn btn-xs btn-default" data-id1="'.$rows_services['id'].'" id="show_description_serv">Edit description</button></td>
                                                         </tr>';
                                                     } else {
                                                         echo '<td>Disabled</td>
-                                                            <td><button class="btn btn-xs btn-default" id="enable_service">Enable service</button>&nbsp;<button class="btn btn-xs btn-default" data-id1="'.$rows_services['id'].'" id="show_description_serv">Edit description</button></td>
+                                                            <td><button class="btn btn-xs btn-default" id="enable_service" data-id1="'.$rows_services['id'].'">Enable service</button>&nbsp;<button class="btn btn-xs btn-default" data-id1="'.$rows_services['id'].'" id="show_description_serv">Edit description</button></td>
                                                         </tr>';
                                                     }
                                         }

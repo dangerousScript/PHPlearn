@@ -53,4 +53,33 @@ $(document).ready(function () {
             }
         });
     });
+
+    // disable service btn
+    $('#disable_service').click(function () {
+        var id_srvs = $(this).data('id1');
+
+        $.ajax({
+            url: '/phplearn/neworder_funcs/disable_service.php',
+            method: 'POST',
+            data: {id_srvs: id_srvs},
+            dataType: 'text',
+            success: function (data) {
+                $(location).attr('href', '/phplearn/services.php');
+            }
+        });
+    });
+
+    $('#enable_service').click(function () {
+        var id_srvs1 = $(this).data('id1');
+
+        $.ajax({
+            url: '/phplearn/neworder_funcs/enable_service.php',
+            method: 'POST',
+            data: {id_srvs1: id_srvs1},
+            dataType: 'text',
+            success: function (data) {
+                $(location).attr('href', '/phplearn/services.php');
+            }
+        });
+    });
 });
